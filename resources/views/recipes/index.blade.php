@@ -21,6 +21,7 @@
                             <th>Description</th>
                             <th>Ingredients</th>
                             <th>instructions</th>
+                            <th>Category</th>
                             <th>Created On</th>
                             <th>Action</th>
                         </tr>
@@ -32,6 +33,7 @@
                                 <td>{{ $recipe->description }}</td>
                                 <td>{{ $recipe->ingredients }}</td>
                                 <td>{{ $recipe->instructions }}</td>
+                                <td><span class="badge bg-success">{{$recipe->category->name}}</span></td>
                                 <td>{{ date('m/d/Y H:m:i', strtotime($recipe->created_at)) }}</td>
 
                                 <td>

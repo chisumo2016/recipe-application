@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -9,13 +10,15 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = Recipe::all();
+        //eager loading
+        $recipes = Recipe::with('category')->get();
         return view('recipes.index', compact('recipes'));
     }
 
     public function create()
     {
-        return view('recipes.create');
+        $categories = Category::all();
+        return view('recipes.create' ,compact('categories'));
     }
 
     public function store(Request $request)
@@ -25,6 +28,7 @@ class RecipeController extends Controller
             'description' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
+            'category_id' => 'required',
         ]);
 
         try {
@@ -35,6 +39,7 @@ class RecipeController extends Controller
             $recipe->ingredients  = $request->ingredients;
             $recipe->instructions = $request->instructions;
             $recipe->image = $request->image;
+            $recipe->category_id = $request->category_id;
             $recipe->save();
 
             return redirect()->route('recipes.index')->with('success', 'Recipe has been created successfully');
@@ -52,7 +57,8 @@ class RecipeController extends Controller
 
     public function edit(Recipe $recipe)
     {
-        return view('recipes.edit', compact('recipe'));
+        $categories = Category::all();
+        return view('recipes.edit', compact('recipe', 'categories'));
     }
 
     public function update(Request $request, Recipe $recipe)
@@ -70,6 +76,7 @@ class RecipeController extends Controller
             $recipe->ingredients  = $request->ingredients;
             $recipe->instructions = $request->instructions;
             $recipe->image = $request->image;
+            $recipe->category_id = $request->category_id;
             $recipe->save();
 
             return redirect()->route('recipes.index')->with('success', 'Recipe has been updated successfully');

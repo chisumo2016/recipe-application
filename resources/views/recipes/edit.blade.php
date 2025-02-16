@@ -59,6 +59,18 @@
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Categories</label>
+                        <select class="form-select" id="category_id" name="category_id" aria-label="Categories">
+                            <option  value="">Select Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                     <button type="submit" class="btn btn-success">Update</button>
                 </form>

@@ -11,6 +11,7 @@
                 <p><strong>Description:</strong>{{ $recipe->description }}</p>
                 <p><strong>Instruction:</strong>{{ $recipe->instructions }}</p>
                 <p><strong>Ingredients:</strong>{{ $recipe->ingredients }}</p>
+                <p><strong>Category:</strong> <span class="badge bg-success">{{$recipe->category->name}}</span></p>
             </div>
         </div>
     </div>

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('instructions');
             $table->string('image')->nullable();
 
-
-
+            /*One to many */
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
