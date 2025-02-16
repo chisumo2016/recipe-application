@@ -49,6 +49,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                    {{ $recipes->links() }}
             </div>
         </div>
     </div>

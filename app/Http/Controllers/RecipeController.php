@@ -11,7 +11,7 @@ class RecipeController extends Controller
     public function index()
     {
         //eager loading
-        $recipes = Recipe::with('category')->get();
+        $recipes = Recipe::with('category')->paginate(5);
         return view('recipes.index', compact('recipes'));
     }
 
