@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/user/dashboard', function () {
 
-    $recipes = \App\Models\Recipe::with('category')->get();
+    $recipes = \App\Models\Recipe::with('category', 'likes')->get();
 
     return view('user.dashboard' ,compact('recipes'));
 })->middleware(['user','auth', 'verified'])->name('user.dashboard');
@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::resource('recipes', RecipeController::class);
+
+    Route::get('/like/{recipe}', [\App\Http\Controllers\LikeController::class,'like'])->name('like');
 
 
 require __DIR__.'/auth.php';

@@ -30,4 +30,12 @@ class Recipe extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    /*
+     * One-to-many relationship
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

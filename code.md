@@ -50,3 +50,9 @@
 
         When the user is logged in will redirected to user dashboard  same as admin .
             
+                app/Http/Controllers/Auth/AuthenticatedSessionController.php
+                resources/views/user/dashboard.blade.php
+
+        Implement the Likes 
+            php artisan make:model Like -mc
+                
