@@ -1,7 +1,10 @@
-@extends('layouts.app-layout')
-
-@section('content')
-    <div class="container">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Categories
+        </h2>
+    </x-slot>
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
                 @if(session('success'))
@@ -11,7 +14,6 @@
                     <div class="alert alert-danger p-1">{{ session('error') }}</div>
                 @endif
 
-                <h1>Categories</h1>
                 <a href="{{ route('categories.create') }}" class="btn btn-primary"> Add New Category</a>
 
                 <table class="table">
@@ -47,4 +49,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>

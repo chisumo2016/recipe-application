@@ -1,10 +1,14 @@
-@extends('layouts.app-layout')
+<x-app-layout>
 
-@section('content')
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Create Recipe
+        </h2>
+    </x-slot>
+
     <div class="container">
         <div class="card mt-2">
             <div class="card-header">
-                <h1>Create Recipe</h1>
                 <a href="{{  route('recipes.index') }}" class="btn btn-primary"> Back</a>
             </div>
 
@@ -76,4 +80,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>

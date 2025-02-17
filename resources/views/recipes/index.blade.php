@@ -1,7 +1,10 @@
-@extends('layouts.app-layout')
-
-@section('content')
-    <div class="container">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Recipes
+        </h2>
+    </x-slot>
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
                 @if(session('success'))
@@ -11,8 +14,7 @@
                         <div class="alert alert-danger p-1">{{ session('error') }}</div>
                     @endif
 
-                <h1>Recipes</h1>
-                <a href="{{ route('recipes.create') }}" class="btn btn-primary"> Add New Recipes</a>
+                <a href="{{ route('recipes.create') }}" class="btn btn-primary "> Add New Recipes</a>
 
                 <table class="table">
                     <thead>
@@ -53,4 +55,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
