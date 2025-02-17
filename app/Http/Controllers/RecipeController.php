@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
+
 
 class RecipeController extends Controller
 {
+
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(['admin', 'user'], only: ['index', 'show']),
+            new Middleware('admin', only: ['create', 'store', 'destroy', 'update', 'edit']),
+            new Middleware('auth')
+        ];
+    }
+
     public function index()
     {
         //eager loading

@@ -5,8 +5,7 @@
         Authentication and Authoriization
         Introduction to Laravel built-in authentication system
         Register , login , and logout functionality using starter kits
-        Middleware for protectiing routes
-        Authorization: For role-based access control
+        
             composer require laravel/breeze --dev
             php artisan breeze:install
                 v
@@ -33,3 +32,14 @@
         BUT ALL THE STYLE WILL LOST FRM BOOTSRAP AS WE'RE USING TAILWINDCSS
             - Solution is to add the boostrap on layout of tailwind
             https://preline.co/
+
+
+        Middleware for protecting routes
+            php artisan make:middleware  AdminMiddleware
+            php artisan make:middleware  UserMiddleware
+
+            php artisan make:migration add_role_column_to_users_table
+
+                Some issue on middleware 
+        Authorization: For role-based access control
+            
