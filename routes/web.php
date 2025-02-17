@@ -15,7 +15,15 @@ Route::get('/dashboard', function () {
     $recipes = \App\Models\Recipe::count();
     $categories = \App\Models\Category::count();
     return view('dashboard' ,compact('users', 'recipes', 'categories'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['admin','auth', 'verified'])->name('dashboard');
+
+Route::get('/user/dashboard', function () {
+
+    $recipes = \App\Models\Recipe::with('category')->get();
+
+    return view('user.dashboard' ,compact('recipes'));
+})->middleware(['user','auth', 'verified'])->name('user.dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

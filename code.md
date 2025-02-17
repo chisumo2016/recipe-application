@@ -42,4 +42,11 @@
 
                 Some issue on middleware 
         Authorization: For role-based access control
+
+
+        ADD MULT AUTHENTICATION DASHBOARD 
+            - For user
+            - For admin 
+
+        When the user is logged in will redirected to user dashboard  same as admin .
             
