@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewRecipeShared;
 use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Mail;
 
 
 class RecipeController extends Controller
@@ -53,6 +56,19 @@ class RecipeController extends Controller
             $recipe->image = $request->image;
             $recipe->category_id = $request->category_id;
             $recipe->save();
+
+            /**Sending email**/
+
+            $users = User::all();
+
+            foreach ($users as $user) {
+                /*send email to all users using direct method */
+                  // Mail::to($user->email)->send(new NewRecipeShared($recipe, $user));
+
+                /*send email to all users using queues  */
+
+                Mail::to($user->email)->queue(new NewRecipeShared($recipe, $user));
+            }
 
             return redirect()->route('recipes.index')->with('success', 'Recipe has been created successfully');
 

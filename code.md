@@ -55,4 +55,24 @@
 
         Implement the Likes 
             php artisan make:model Like -mc
+
+
+# TASK SCHEDULING AND QUEUES 
+    https://laravel.com/docs/11.x/mail#main-content
+    .Introducing to task scheduling
+    .Setting up schuduled taks (Task  Schedular)
+    .Using queues for handling time-consuming tasks
+    .Dispatching jobs and processing queues .
+
+        . Generating Markdown Mailables
+            php artisan make:mail NewRecipeShared --markdown=mail.recipes.new-recipe
+
+        Send email using  Mailable  - Take so long to send email to user
+        Send email using  queues  
+            php artisan queue:work
+
+
+
+
+
                 
