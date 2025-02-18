@@ -13,7 +13,10 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ route('recipes.store') }}" method="POST">
+                <form
+                    action="{{ route('recipes.store') }}"
+                    method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -75,6 +78,19 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                 </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input
+                            type="file"
+                            class="form-control"
+                            id="image"
+                            name="image">
+                        @error('image')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                   </div>
+
                     <button type="submit" class="btn btn-success">Create</button>
                 </form>
             </div>

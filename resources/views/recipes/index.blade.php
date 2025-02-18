@@ -19,6 +19,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Recipe Image</th>
                             <th>Recipe Name</th>
                             <th>Description</th>
                             <th>Ingredients</th>
@@ -31,6 +32,7 @@
                     <tbody>
                     @foreach($recipes as $recipe)
                             <tr>
+                                <td><img src="{{ asset('storage/'.$recipe->image) }}" alt="image" width="50px" height="50px"></td>
                                 <td>{{ $recipe->name }}</td>
                                 <td>{{ $recipe->description }}</td>
                                 <td>{{ $recipe->ingredients }}</td>

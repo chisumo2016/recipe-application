@@ -59,10 +59,10 @@
 
 # TASK SCHEDULING AND QUEUES 
     https://laravel.com/docs/11.x/mail#main-content
-    .Introducing to task scheduling
-    .Setting up schuduled taks (Task  Schedular)
-    .Using queues for handling time-consuming tasks
-    .Dispatching jobs and processing queues .
+    . Introducing to task scheduling
+    . Setting up schuduled taks (Task Schedular)
+    . Using queues for handling time-consuming tasks
+    . Dispatching jobs and processing queues .
 
         . Generating Markdown Mailables
             php artisan make:mail NewRecipeShared --markdown=mail.recipes.new-recipe
@@ -70,6 +70,57 @@
         Send email using  Mailable  - Take so long to send email to user
         Send email using  queues  
             php artisan queue:work
+
+# FILE STORAGE
+    . File strorage configuration (local, public etc)
+        FILESYSTEM_DISK=local
+        config/filesystems.php
+
+    1:  LOCAL STORAGE
+            storage/app/private
+            Increase security of acccessing images 
+            Recommended way  to do it .
+
+                'local' => [
+                    'driver' => 'local',
+                    'root' => storage_path('app/private'),
+                    'serve' => true,
+                    'throw' => false,
+                    'report' => false,
+                ],
+
+    2: PUBLIC STORAGE
+            storage/app/public
+                'public' => [
+                        'driver' => 'local',
+                        'root' => storage_path('app/public'),
+                        'url' => env('APP_URL').'/storage',
+                        'visibility' => 'public',
+                        'throw' => false,
+                        'report' => false,
+                    ],
+            To activate  the symbolic link
+                php artisan storage:link
+
+    . Uploading files to the local filesystem
+         $image_path= $request->file('image')->store('images', 'public');
+    . Retrieving files
+        php artisan config:clear
+        php artisan optimize
+             1 :<td><img src="{{ Storage::url($recipe->image) }}" alt="image"></td>
+             2 :<td><img src="{{ Storage::url($recipe->image) }}" alt="image"></td>
+# API DEVELOPMENT WITH LARAVEL 11
+    . Settingg up routes for API (api..php)
+    . Building API's with resource controllers
+    . JSON responses and status codes
+    . API authentiation:
+            Sanctum for SPA authentication
+
+# DEPLOYMENT 
+    . Preparing a Laravel
+    . Configuration .env  for production
+    . Deployment Laravel on shared hhosting
+    . Preparing a Laravel
 
 
 

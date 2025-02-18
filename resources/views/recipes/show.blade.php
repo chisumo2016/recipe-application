@@ -10,6 +10,7 @@
                 <a href="{{  route('recipes.index') }}" class="btn btn-primary"> Back</a>
             </div>
             <div class="card-body">
+                <p><img src="{{ asset('storage/'.$recipe->image) }}" alt="image" width="350px" height="350px" class="rounded-md mb-5"></p>
                 <p><strong>Description:</strong>{{ $recipe->description }}</p>
                 <p><strong>Instruction:</strong>{{ $recipe->instructions }}</p>
                 <p><strong>Ingredients:</strong>{{ $recipe->ingredients }}</p>

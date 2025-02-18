@@ -44,16 +44,20 @@ class RecipeController extends Controller
             'ingredients' => 'required',
             'instructions' => 'required',
             'category_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', //2mb
         ]);
 
         try {
+             /*Upload Image*/
+              $image_path= $request->file('image')->store('images', 'public');
+
             $recipe = new Recipe();
 
             $recipe->name = $request->name;
             $recipe->description  = $request->description;
             $recipe->ingredients  = $request->ingredients;
             $recipe->instructions = $request->instructions;
-            $recipe->image = $request->image;
+            $recipe->image = $image_path;
             $recipe->category_id = $request->category_id;
             $recipe->save();
 
